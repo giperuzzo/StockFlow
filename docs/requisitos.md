@@ -164,7 +164,7 @@ O sistema deve possuir uma interface simples, organizada e fácil de utilizar.
 
 ### RNF02 — Persistência dos dados
 
-Os dados do sistema devem ser armazenados de forma persistente em um banco de dados PostgreSQL.
+Os dados do sistema devem ser armazenados de forma persistente em um banco de dados MySQL.
 
 ### RNF03 — API
 

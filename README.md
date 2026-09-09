@@ -56,7 +56,7 @@ Backend
 
 Banco de dados
 
-* PostgreSQL
+* MySQL
 
 Ferramentas
 
@@ -87,7 +87,7 @@ Fase 1 — Planejamento
 Fase 2 — Backend
 
 * [ ]	Configuração do projeto Java/Spring Boot
-* [ ]	Configuração do PostgreSQL
+* [ ]	Configuração do MySQL
 * [ ]	Criação das entidades
 * [ ]	Criação das APIs REST
 * [ ]	Validações
