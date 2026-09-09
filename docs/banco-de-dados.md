@@ -133,6 +133,18 @@ Nota Fiscal 1:N Conta a Pagar
 
 A chave estrangeira nota_fiscal_id ficará na entidade Conta a Pagar, identificando a qual nota fiscal a parcela pertence.
 
+### 7.5 Item da Nota e Conferência
+
+Um item da nota fiscal pode possuir várias conferências.
+
+Cada conferência pertence a um único item da nota fiscal.
+
+*Relacionamento:*
+
+Item da Nota 1:N Conferência
+
+A chave estrangeira item_nota_id ficará na entidade Conferência, identificando a qual item da nota fiscal a conferência pertence.
+
 ## 8. Resumo do Modelo
 
 O banco de dados do StockFlow será composto pelas seguintes entidades:
@@ -141,6 +153,7 @@ O banco de dados do StockFlow será composto pelas seguintes entidades:
 - Fornecedor
 - Nota Fiscal
 - Item da Nota
+- Conferência
 - Conta a Pagar
 
 ### Relacionamentos
@@ -153,6 +166,8 @@ O banco de dados do StockFlow será composto pelas seguintes entidades:
 - Cada item corresponde a um único produto.
 - Uma nota fiscal pode gerar uma ou mais parcelas de contas a pagar.
 - Cada parcela pertence a uma única nota fiscal.
+- Um item da nota pode possuir várias conferências.
+- Cada conferência pertence a um único item da nota.
 
 ### Estrutura conceitual
 
@@ -164,6 +179,8 @@ Produto 1:N Item da Nota
 
 Nota Fiscal 1:N Conta a Pagar
 
+Item da Nota 1:N Conferência
+
 
 ## 9. Diagrama Entidade-Relacionamento
 
@@ -174,6 +191,7 @@ erDiagram
     NOTA_FISCAL ||--|{ ITEM_NOTA : possui
     PRODUTO ||--o{ ITEM_NOTA : aparece_em
     NOTA_FISCAL ||--|{ CONTA_A_PAGAR : gera
+    ITEM_NOTA ||--o{ CONFERENCIA : possui
 
     FORNECEDOR {
         bigint id PK
@@ -215,6 +233,15 @@ erDiagram
         decimal valor_total
     }
 
+    CONFERENCIA {
+        bigint id PK
+        bigint item_nota_id FK
+        decimal quantidade_recebida
+        string status
+        string observacao
+        datetime data_conferencia
+    }
+
     CONTA_A_PAGAR {
         bigint id PK
         bigint nota_fiscal_id FK
@@ -222,6 +249,4 @@ erDiagram
         decimal valor_parcela
         date data_vencimento
         string status
-    
-
-    
+    }
